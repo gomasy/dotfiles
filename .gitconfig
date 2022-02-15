@@ -1,0 +1,13 @@
+[user]
+	name = Gomasy
+	email = nyan@gomasy.jp
+	signingkey = 02BE7F39D978AC7E
+[commit]
+	gpgsign = true
+[core]
+	autocrlf = input
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

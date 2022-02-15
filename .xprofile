@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [[ -e /bin/xhost ]]; then
+    id wineuser > /dev/null 2>&1
+    if [[ $? -eq 0 ]]; then
+        xhost +SI:localuser:wineuser
+    fi
+fi

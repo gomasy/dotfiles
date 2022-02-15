@@ -1,0 +1,14 @@
+{
+    "common": {
+        "term_truecolor": "auto"
+    },
+    "ext": {
+        "tmux": {
+            "colorscheme": "numix",
+            "theme": "custom"
+        },
+        "vim": {
+            "colorscheme": "numix"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "segments": {
+        "right": [
+            {
+                "function": "powerline.segments.common.wthr.weather",
+                "args": {
+                    "temp_format": "\ud83c\udf21 {temp:.0f}°C",
+                    "location_query": "Mashiko"
+                }
+            },
+            {
+                "function": "powerline.segments.common.time.date"
+            },
+            {
+                "function": "powerline.segments.common.time.date",
+                "args": {
+                    "format": "%H:%M",
+                    "istime": true
+                }
+            },
+            {
+                "function": "powerline.segments.common.net.hostname",
+                "args": {
+                    "exclude_domain": true
+                }
+            }
+        ]
+    }
+}

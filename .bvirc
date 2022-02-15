@@ -1,0 +1,4 @@
+set columns=16
+set ignorecase
+set memmove
+set nowrapscan
