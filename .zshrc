@@ -1,7 +1,7 @@
 # Load zinit
 if [[ ! -e $HOME/.zinit ]]; then
     echo "\e[1m[*] Installing zinit...\e[m"
-    git clone https://github.com/ryanstreur/zinit.git $HOME/.zinit
+    git clone https://github.com/zdharma-continuum/zinit.git $HOME/.zinit
 fi
 source $HOME/.zinit/zinit.zsh
 
