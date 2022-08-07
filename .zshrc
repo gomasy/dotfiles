@@ -159,7 +159,7 @@ if [[ `id -u` -ne 0 ]]; then
 fi
 
 # Show motd
-which screenfetch &> /dev/null && [[ -n $TMUX ]] && screenfetch -c 4,15
+which neofetch &> /dev/null && [[ -n $TMUX ]] && neofetch
 
 # Run tmux
 if which tmux &> /dev/null && [[ $- != *l* ]]; then
