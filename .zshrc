@@ -6,7 +6,6 @@ fi
 source $HOME/.zinit/zinit.zsh
 
 # Load libraries
-zinit snippet OMZ::lib/termsupport.zsh
 zinit snippet OMZ::lib/theme-and-appearance.zsh
 zinit snippet OMZ::lib/completion.zsh
 zinit snippet OMZ::lib/key-bindings.zsh
