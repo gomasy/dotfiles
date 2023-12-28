@@ -107,7 +107,7 @@ if [[ `id -u` -ne 0 ]]; then
                 git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build
             fi
         else
-            eval "$(rbenv init -)"
+            eval "$(rbenv init - zsh)"
         fi
 
         if ! which bundler &> /dev/null; then
