@@ -5,7 +5,7 @@
                 "function": "powerline.segments.common.wthr.weather",
                 "args": {
                     "temp_format": "\ud83c\udf21 {temp:.0f}°C",
-                    "location_query": "Mashiko"
+                    "location_query": "Utsunomiya, JP"
                 }
             },
             {
