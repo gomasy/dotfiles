@@ -96,7 +96,6 @@ if [[ `id -u` -ne 0 ]]; then
     # Ruby settings
     if which ruby &> /dev/null || [[ -e $HOME/.rbenv ]]; then
         export PATH=$HOME/.rbenv/bin:$PATH
-        export PATH=$(ruby -e'print Gem.user_dir')/bin:$PATH
 
         if ! which rbenv &> /dev/null; then
             if [[ ! -e $HOME/.rbenv ]]; then
@@ -108,6 +107,7 @@ if [[ `id -u` -ne 0 ]]; then
             fi
         else
             eval "$(rbenv init - zsh)"
+            export PATH=$(ruby -e'print Gem.user_dir')/bin:$PATH
         fi
 
         if ! which bundler &> /dev/null; then
