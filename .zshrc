@@ -157,9 +157,6 @@ if [[ `id -u` -ne 0 ]]; then
     fi
 fi
 
-# Show motd
-which neofetch &> /dev/null && [[ -n $TMUX ]] && neofetch
-
 # Run tmux
 if which tmux &> /dev/null && [[ $- != *l* ]]; then
     if tmux has 2> /dev/null; then
