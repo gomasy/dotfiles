@@ -13,6 +13,11 @@ zinit snippet OMZ::lib/history.zsh
 zinit snippet OMZ::lib/grep.zsh
 zinit snippet OMZ::lib/git.zsh
 
+# Load plugins
+zinit snippet OMZ::plugins/ssh/ssh.plugin.zsh
+zinit snippet OMZ::plugins/tailscale/tailscale.plugin.zsh
+zinit snippet OMZ::plugins/terraform/terraform.plugin.zsh
+
 # Load theme
 zinit snippet OMZ::themes/agnoster.zsh-theme
 
