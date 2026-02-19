@@ -6,7 +6,7 @@ local function toggle(name)
 end
 
 -- Common settings
-vim.keymap.set('n', '<Leader>r', function() require('vimrc').reload() end, { silent = true })
+vim.keymap.set('n', '<Leader>r', function() vim.cmd('source ~/.config/nvim/init.lua') end, { silent = true })
 vim.keymap.set('n', '<ESC><ESC>', ':noh<CR>', { silent = true })
 vim.keymap.set('n', '<C-n>', ':new<CR>', { silent = true })
 vim.keymap.set('n', '<C-w>h', ':sp<CR>', { silent = true })

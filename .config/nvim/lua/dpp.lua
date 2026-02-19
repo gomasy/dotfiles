@@ -1,5 +1,3 @@
-local M = {}
-
 local function plugin_dir()
   return vim.fn.expand('~/.cache/dpp')
 end
@@ -9,7 +7,6 @@ local function setup_dpp()
   local repos = {
     'Shougo/dpp.vim',
     'vim-denops/denops.vim',
-    'Shougo/dpp-ext-toml',
     'Shougo/dpp-ext-installer',
     'Shougo/dpp-ext-lazy',
     'Shougo/dpp-protocol-git',
@@ -46,20 +43,9 @@ local function load_dpp()
   end
 end
 
-function M.init()
-  vim.g.dpp_dir = plugin_dir()
-  vim.g.repo_dir = vim.g.dpp_dir .. '/repos/github.com'
-  vim.g.mapleader = ','
+vim.g.dpp_dir = plugin_dir()
+vim.g.repo_dir = vim.g.dpp_dir .. '/repos/github.com'
+vim.g.mapleader = ','
 
-  setup_dpp()
-  load_dpp()
-
-  require('configs.general')
-  require('configs.mappings')
-end
-
-function M.reload()
-  vim.cmd('source ~/.config/nvim/init.lua')
-end
-
-return M
+setup_dpp()
+load_dpp()

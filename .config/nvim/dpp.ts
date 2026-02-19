@@ -6,11 +6,6 @@ import {
 import type { Plugin } from "jsr:@shougo/dpp-vim/types";
 import * as fn from "jsr:@denops/std/function";
 
-type Toml = {
-  plugins?: Plugin[];
-  ftplugins?: Record<string, string>;
-};
-
 type LazyMakeStateResult = {
   plugins: Plugin[];
   stateLines: string[];
@@ -26,25 +21,14 @@ export class Config extends BaseConfig {
 
     let plugins: Plugin[] = [];
     let stateLines: string[] = [];
-    const ftplugins: Record<string, string> = {};
 
-    const tomlResult = await args.dpp.extAction(
+    const luaPlugins = await fn.luaeval(
       args.denops,
-      context,
-      options,
-      "toml",
-      "load",
-      {
-        path: `${await fn.expand(args.denops, "~/.config/nvim")}/plugins/dpp.toml`,
-        options: {},
-      },
-    ) as Toml | undefined;
+      'require("plugins")',
+    ) as Plugin[];
 
-    if (tomlResult) {
-      plugins = [...plugins, ...(tomlResult.plugins ?? [])];
-      for (const [ft, plug] of Object.entries(tomlResult.ftplugins ?? {})) {
-        ftplugins[ft] = `${ftplugins[ft] ?? ""}${plug}`;
-      }
+    if (luaPlugins) {
+      plugins = [...plugins, ...luaPlugins];
     }
 
     const lazyResult = await args.dpp.extAction(
@@ -61,6 +45,6 @@ export class Config extends BaseConfig {
       stateLines = lazyResult.stateLines;
     }
 
-    return { ftplugins, plugins, stateLines };
+    return { ftplugins: {}, plugins, stateLines };
   }
 }
