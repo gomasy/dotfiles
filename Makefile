@@ -9,6 +9,11 @@ NEOVIM := $(shell which nvim 2> /dev/null)
 X      := $(shell which X 2> /dev/null)
 ZSH    := $(shell which zsh 2> /dev/null)
 
+# Git user settings (base64-encoded to avoid plain text exposure in public repo)
+GIT_NAME_B64    := R29tYXN5
+GIT_EMAIL_B64   := bnlhbkBnb21hc3kuanA=
+GIT_SIGKEY_B64  := MDJCRTdGMzlEOTc4QUM3RQ==
+
 TARGETS := git
 
 ifdef BVI
@@ -60,6 +65,12 @@ git:
 	mkdir -p -m 700 ${HOME}/.ssh
 	ln -sf ${PWD}/.ssh/config ${HOME}/.ssh/config
 	ln -sf ${PWD}/.gitconfig ${HOME}/.gitconfig
+	printf '[user]\n\tname = %s\n\temail = %s\n\tsigningkey = %s\n' \
+		$$(echo $(GIT_NAME_B64) | base64 -d) \
+		$$(echo $(GIT_EMAIL_B64) | base64 -d) \
+		$$(echo $(GIT_SIGKEY_B64) | base64 -d) \
+		> ${HOME}/.gitconfig.local
+	chmod 600 ${HOME}/.gitconfig.local
 
 gpg:
 	mkdir -p ${HOME}/.gnupg

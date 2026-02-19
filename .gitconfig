@@ -1,7 +1,5 @@
-[user]
-	name = Gomasy
-	email = nyan@gomasy.jp
-	signingkey = 02BE7F39D978AC7E
+[include]
+	path = ~/.gitconfig.local
 [commit]
 	gpgsign = true
 [core]
