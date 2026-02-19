@@ -7,7 +7,6 @@ TERM := $(shell which terminator 2> /dev/null)
 TMUX := $(shell which tmux 2> /dev/null)
 NEOVIM := $(shell which nvim 2> /dev/null)
 X := $(shell which X 2> /dev/null)
-YARN := $(shell which yarn 2> /dev/null)
 ZSH := $(shell which zsh 2> /dev/null)
 
 install:
@@ -53,10 +52,6 @@ ifdef TERM
 	mkdir -p -m 700 ${HOME}/.config
 	ln -sf ${PWD}/.config/terminator ${HOME}/.config/terminator
 endif
-endif
-
-ifdef YARN
-	ln -sf ${PWD}/.yarnrc ${HOME}/.yarnrc
 endif
 
 ifdef ZSH
