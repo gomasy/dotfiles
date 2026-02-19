@@ -37,9 +37,10 @@ endif
 
 ifdef X
 TARGETS += x11
+endif
+
 ifdef TERM
 TARGETS += terminator
-endif
 endif
 
 ifdef ZSH
