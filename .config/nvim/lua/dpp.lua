@@ -22,7 +22,7 @@ local function setup_dpp()
 end
 
 local function after_make_state()
-  vim.cmd('source ' .. vim.env.MYVIMRC)
+  vim.fn['dpp#min#load_state'](vim.g.dpp_dir)
   vim.fn['dpp#async_ext_action']('installer', 'install')
 end
 
