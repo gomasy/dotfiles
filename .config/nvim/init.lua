@@ -1,5 +1,3 @@
-vim.loader.enable()
-
-require('general')
 require('dpp')
+require('general')
 require('mappings')
