@@ -21,7 +21,6 @@ return {
   require('plugins.molokai'),
   require('plugins.colorizer'),
   require('plugins.vim_vue'),
-  require('plugins.vim_pug'),
   require('plugins.vim_toml'),
   require('plugins.open_browser'),
   require('plugins.nginx'),
