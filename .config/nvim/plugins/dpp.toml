@@ -34,7 +34,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
-if = 'has("nvim")'
 hook_add = '''
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#enabled = 1
@@ -68,7 +67,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-if = 'has("nvim")'
 repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
@@ -91,7 +89,6 @@ repo = 'jistr/vim-nerdtree-tabs'
 
 [[plugins]]
 repo = 'lambdalisue/suda.vim'
-if = 'has("nvim")'
 hook_add = 'nnoremap <silent><Leader>su :w suda://%<CR>'
 
 [[plugins]]
@@ -139,7 +136,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
-if = '!has("nvim")'
 hook_add = 'set helplang=ja,en'
 
 [[plugins]]
@@ -183,5 +179,4 @@ on_ft = ['markdown']
 
 [[plugins]]
 repo = 'chr4/nginx.vim'
-if = 'has("nvim")'
 on_ft = ['nginx']

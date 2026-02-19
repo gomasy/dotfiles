@@ -35,7 +35,7 @@ export class Config extends BaseConfig {
       "toml",
       "load",
       {
-        path: `${await fn.expand(args.denops, "~/.config/nvim")}/plugins/dein.toml`,
+        path: `${await fn.expand(args.denops, "~/.config/nvim")}/plugins/dpp.toml`,
         options: {},
       },
     ) as Toml | undefined;

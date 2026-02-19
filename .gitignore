@@ -1,3 +1,2 @@
 .config/nvim/plugins/*
-!dein.toml
-!dein_lazy.toml
+!dpp.toml
