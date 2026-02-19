@@ -6,20 +6,20 @@ fi
 source $HOME/.zinit/zinit.zsh
 
 # Load libraries
-zinit snippet OMZ::lib/theme-and-appearance.zsh
-zinit snippet OMZ::lib/completion.zsh
-zinit snippet OMZ::lib/key-bindings.zsh
-zinit snippet OMZ::lib/history.zsh
-zinit snippet OMZ::lib/grep.zsh
-zinit snippet OMZ::lib/git.zsh
+zinit snippet OMZL::theme-and-appearance.zsh
+zinit snippet OMZL::completion.zsh
+zinit snippet OMZL::key-bindings.zsh
+zinit snippet OMZL::history.zsh
+zinit snippet OMZL::grep.zsh
+zinit snippet OMZL::git.zsh
 
 # Load plugins
-zinit snippet OMZ::plugins/ssh/ssh.plugin.zsh
-zinit snippet OMZ::plugins/tailscale/tailscale.plugin.zsh
-zinit snippet OMZ::plugins/terraform/terraform.plugin.zsh
+zinit snippet OMZP::ssh
+zinit snippet OMZP::tailscale
+zinit snippet OMZP::terraform
 
 # Load theme
-zinit snippet OMZ::themes/agnoster.zsh-theme
+zinit snippet OMZT::agnoster
 
 # Load plugins
 zinit light willghatch/zsh-cdr
