@@ -2,40 +2,50 @@ function! vimrc#plugin_dir()
   if !has('nvim')
     return expand('~/.vim/plugins')
   else
-    return expand('~/.config/nvim/plugins')
+    return expand('~/.cache/dpp')
   endif
 endfunction
 
-function! vimrc#setup_dein()
-  if !isdirectory(g:dein_repo_dir)
-    call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(g:dein_repo_dir))
-  endif
-  exec 'set runtimepath& runtimepath^=' . fnamemodify(g:dein_repo_dir, ':p')
-endfunction
+function! vimrc#setup_dpp()
+  let l:base_dir = vimrc#plugin_dir()
+  let l:repos = [
+    \ 'Shougo/dpp.vim',
+    \ 'vim-denops/denops.vim',
+    \ 'Shougo/dpp-ext-toml',
+    \ 'Shougo/dpp-ext-installer',
+    \ 'Shougo/dpp-ext-lazy',
+    \ 'Shougo/dpp-protocol-git',
+    \ ]
 
-function! vimrc#load_dein()
-  if dein#load_state(g:dein_dir)
-    call dein#begin(g:dein_dir)
-
-    call dein#load_toml(g:dein_dir . '/dein.toml')
-    if dein#check_install()
-      call dein#install()
+  for l:repo in l:repos
+    let l:dir = l:base_dir . '/repos/github.com/' . l:repo
+    if !isdirectory(l:dir)
+      call system('git clone --depth 1 https://github.com/' . l:repo . ' ' . shellescape(l:dir))
     endif
+    execute 'set runtimepath^=' . l:dir
+  endfor
+endfunction
 
-    call dein#end()
-    call dein#save_state()
+function! vimrc#load_dpp()
+  if dpp#min#load_state(g:dpp_dir)
+    autocmd User DenopsReady ++once
+      \ call dpp#make_state(g:dpp_dir, expand('~/.config/nvim/dpp.ts'))
+    autocmd User Dpp:makeStatePost ++once call vimrc#after_make_state()
   endif
+endfunction
+
+function! vimrc#after_make_state()
+  source $MYVIMRC
+  call dpp#async_ext_action('installer', 'install')
 endfunction
 
 function! vimrc#init()
-  let g:dein_dir = vimrc#plugin_dir()
-  let g:repo_dir = g:dein_dir . '/repos/github.com'
-  let g:dein_repo_dir = g:repo_dir . '/Shougo/dein.vim'
-  let g:dein#types#git#clone_depth = 1
+  let g:dpp_dir = vimrc#plugin_dir()
+  let g:repo_dir = g:dpp_dir . '/repos/github.com'
   let g:mapleader = ","
 
-  call vimrc#setup_dein()
-  call vimrc#load_dein()
+  call vimrc#setup_dpp()
+  call vimrc#load_dpp()
 
   runtime! configs/*.vim
 endfunction
