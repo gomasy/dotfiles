@@ -6,7 +6,6 @@ RUBY := $(shell which ruby 2> /dev/null)
 TERM := $(shell which terminator 2> /dev/null)
 TMUX := $(shell which tmux 2> /dev/null)
 NEOVIM := $(shell which nvim 2> /dev/null)
-VIM := $(shell which vim 2> /dev/null)
 X := $(shell which X 2> /dev/null)
 YARN := $(shell which yarn 2> /dev/null)
 ZSH := $(shell which zsh 2> /dev/null)
@@ -42,17 +41,8 @@ ifdef TMUX
 	ln -sf ${PWD}/.tmux.conf ${HOME}/.tmux.conf
 endif
 
-ifdef VIM
 ifdef NEOVIM
 	ln -sf ${PWD}/.config/nvim ${HOME}/.config/nvim
-else
-	ln -sf ${PWD}/.config/nvim ${HOME}/.vim
-	ln -sf ${PWD}/.config/nvim/init.vim ${HOME}/.vimrc
-endif
-else
-ifdef NEOVIM
-	ln -sf ${PWD}/.config/nvim ${HOME}/.config/nvim
-endif
 endif
 
 ifdef X
