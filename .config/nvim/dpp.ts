@@ -28,7 +28,13 @@ export class Config extends BaseConfig {
     ) as Plugin[];
 
     if (luaPlugins) {
-      plugins = [...plugins, ...luaPlugins];
+      plugins = [
+        ...plugins,
+        ...luaPlugins.map((p) => ({
+          name: (p.repo ?? "").split("/").pop() ?? "",
+          ...p,
+        })),
+      ];
     }
 
     const lazyResult = await args.dpp.extAction(
