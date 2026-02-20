@@ -9,6 +9,9 @@ NEOVIM := $(shell which nvim 2> /dev/null)
 X      := $(shell which X 2> /dev/null)
 ZSH    := $(shell which zsh 2> /dev/null)
 
+# Git signing options
+GPGSIGN ?= no
+
 # Git user settings (base64-encoded to avoid plain text exposure in public repo)
 GIT_NAME_B64    := R29tYXN5
 GIT_EMAIL_B64   := bnlhbkBnb21hc3kuanA=
@@ -70,6 +73,7 @@ git:
 		$$(echo $(GIT_EMAIL_B64) | base64 -d) \
 		$$(echo $(GIT_SIGKEY_B64) | base64 -d) \
 		> ${HOME}/.gitconfig.local
+	$(if $(filter yes,$(GPGSIGN)),printf '[commit]\n\tgpgsign = true\n' >> ${HOME}/.gitconfig.local)
 	chmod 600 ${HOME}/.gitconfig.local
 
 gpg:

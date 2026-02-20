@@ -1,7 +1,5 @@
 [include]
 	path = ~/.gitconfig.local
-[commit]
-	gpgsign = true
 [core]
 	autocrlf = input
 [filter "lfs"]
