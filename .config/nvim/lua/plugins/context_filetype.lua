@@ -1,3 +1,1 @@
-return {
-  repo = 'Shougo/context_filetype.vim',
-}
+return { 'Shougo/context_filetype.vim' }

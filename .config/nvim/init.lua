@@ -1,5 +1,8 @@
 vim.loader.enable()
 
-require('dpp')
-require('general')
-require('mappings')
+-- Use ',' as the leader key
+vim.g.mapleader = ','
+
+require('config.options')
+require('config.keymaps')
+require('config.lazy')

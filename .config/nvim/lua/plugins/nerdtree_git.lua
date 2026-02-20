@@ -1,3 +1,1 @@
-return {
-  repo = 'Xuyuanp/nerdtree-git-plugin',
-}
+return { 'Xuyuanp/nerdtree-git-plugin' }

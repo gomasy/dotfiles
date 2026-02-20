@@ -1,4 +1,4 @@
 return {
-  repo = 'cespare/vim-toml',
-  on_ft = { 'toml' },
+  'cespare/vim-toml',
+  ft = { 'toml' },
 }

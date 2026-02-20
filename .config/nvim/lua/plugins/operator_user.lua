@@ -1,3 +1,1 @@
-return {
-  repo = 'kana/vim-operator-user',
-}
+return { 'kana/vim-operator-user' }

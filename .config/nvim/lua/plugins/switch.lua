@@ -1,6 +1,6 @@
 return {
-  repo = 'AndrewRadev/switch.vim',
-  lua_add = [[
+  'AndrewRadev/switch.vim',
+  config = function()
     vim.keymap.set('n', 't', ':Switch<CR>', { silent = true })
-  ]],
+  end,
 }

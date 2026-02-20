@@ -1,3 +1,1 @@
-return {
-  repo = 'jistr/vim-nerdtree-tabs',
-}
+return { 'jistr/vim-nerdtree-tabs' }

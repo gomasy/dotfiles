@@ -1,6 +1,6 @@
 return {
-  repo = 'scrooloose/nerdtree',
-  lua_add = [[
+  'scrooloose/nerdtree',
+  init = function()
     vim.keymap.set('n', '<C-f>', ':NERDTreeTabsToggle<CR>', { silent = true })
     vim.api.nvim_create_autocmd('BufEnter', {
       pattern = '*',
@@ -10,5 +10,5 @@ return {
     if vim.fn.winwidth(0) < 128 then
       vim.g.NERDTreeWinSize = 25
     end
-  ]],
+  end,
 }

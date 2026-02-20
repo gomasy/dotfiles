@@ -1,3 +1,1 @@
-return {
-  repo = 'editorconfig/editorconfig-vim',
-}
+return { 'editorconfig/editorconfig-vim' }

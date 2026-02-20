@@ -1,4 +1,4 @@
 return {
-  repo = 'chr4/nginx.vim',
-  on_ft = { 'nginx' },
+  'chr4/nginx.vim',
+  ft = { 'nginx' },
 }

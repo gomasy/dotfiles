@@ -1,4 +1,4 @@
 return {
-  repo = 'tpope/vim-endwise',
-  on_event = 'InsertEnter',
+  'tpope/vim-endwise',
+  event = 'InsertEnter',
 }

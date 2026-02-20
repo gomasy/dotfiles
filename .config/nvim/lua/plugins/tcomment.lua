@@ -1,3 +1,1 @@
-return {
-  repo = 'tomtom/tcomment_vim',
-}
+return { 'tomtom/tcomment_vim' }

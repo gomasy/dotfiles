@@ -1,4 +1,4 @@
 return {
-  repo = 'tyru/open-browser.vim',
-  on_ft = { 'markdown' },
+  'tyru/open-browser.vim',
+  ft = { 'markdown' },
 }

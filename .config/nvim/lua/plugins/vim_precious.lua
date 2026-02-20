@@ -1,4 +1,4 @@
 return {
-  repo = 'osyo-manga/vim-precious',
-  depends = { 'Shougo/context_filetype.vim' },
+  'osyo-manga/vim-precious',
+  dependencies = { 'Shougo/context_filetype.vim' },
 }

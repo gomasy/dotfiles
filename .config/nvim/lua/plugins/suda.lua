@@ -1,6 +1,6 @@
 return {
-  repo = 'lambdalisue/suda.vim',
-  lua_add = [[
+  'lambdalisue/suda.vim',
+  config = function()
     vim.keymap.set('n', '<Leader>su', ':w suda://%<CR>', { silent = true })
-  ]],
+  end,
 }
