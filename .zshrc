@@ -119,16 +119,6 @@ if [[ `id -u` -ne 0 ]]; then
             echo "\e[1m[*] Installing bundler...\e[m"
             gem install bundler
         fi
-
-        if ! which kramdown &> /dev/null; then
-            echo "\e[1m[*] Installing kramdown...\e[m"
-            gem install kramdown
-        fi
-
-        if ! which solargraph &> /dev/null && which node &> /dev/null; then
-            echo "\e[1m[*] Installing solargraph...\e[m"
-            gem install solargraph
-        fi
     fi
 
     # PHP settings
