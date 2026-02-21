@@ -1,4 +1,4 @@
-# Existince check
+# Existence check
 BVI    := $(shell which bvi 2> /dev/null)
 GPG    := $(shell which gpg 2> /dev/null)
 PWLINE := $(shell which powerline 2> /dev/null)
