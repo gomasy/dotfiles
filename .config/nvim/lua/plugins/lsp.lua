@@ -22,7 +22,6 @@ return {
         'bashls',
         'dockerls',
         'marksman',
-        'taplo',
       },
       automatic_enable = true,
     },

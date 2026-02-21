@@ -17,7 +17,6 @@ return {
       'php',
       'query',
       'ruby',
-      'toml',
       'typescript',
       'vim',
       'vimdoc',
