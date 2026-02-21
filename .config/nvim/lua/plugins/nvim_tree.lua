@@ -3,7 +3,7 @@ return {
   config = function()
     require('nvim-tree').setup({
       view = {
-        width = vim.fn.winwidth(0) < 128 and 25 or 30,
+        width = vim.fn.winwidth(0) < 160 and 30 or 40,
       },
       filters = {
         dotfiles = false,
