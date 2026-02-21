@@ -1,5 +1,6 @@
 {
     "groups": {
+        "background:divider":   { "fg": "numix:base1",  "bg": "numix:base03", "attrs": [] },
         "active_window_status": { "fg": "numix:blue",   "bg": "numix:base02", "attrs": [] },
         "window_status":        { "fg": "numix:base1",  "bg": "numix:base02", "attrs": [] },
         "activity_status":      { "fg": "numix:yellow", "bg": "numix:base02", "attrs": [] },

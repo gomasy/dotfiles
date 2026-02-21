@@ -2,9 +2,14 @@
     "segments": {
         "right": [
             {
+                "function": "powerline.segments.common.sys.system_load",
+                "before": "\udb81\udcc5  ",
+                "divider_highlight_group": "system_load:divider"
+            },
+            {
                 "function": "powerline.segments.common.wthr.weather",
                 "args": {
-                    "temp_format": "\ud83c\udf21 {temp:.0f}°C",
+                    "temp_format": "\uf2c9 {temp:.0f}°C",
                     "location_query": "Utsunomiya, JP"
                 }
             },
@@ -13,6 +18,7 @@
             },
             {
                 "function": "powerline.segments.common.time.date",
+                "before": "\ue385 ",
                 "args": {
                     "format": "%H:%M",
                     "istime": true
@@ -20,7 +26,9 @@
             },
             {
                 "function": "powerline.segments.common.net.hostname",
+                "before": "\uf023 ",
                 "args": {
+                    "only_if_ssh": true,
                     "exclude_domain": true
                 }
             }
