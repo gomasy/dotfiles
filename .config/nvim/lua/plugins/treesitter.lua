@@ -5,14 +5,20 @@ return {
   config = function()
     local parsers = {
       'bash',
+      'c',
       'css',
       'html',
       'javascript',
       'json',
       'lua',
+      'markdown',
+      'markdown_inline',
+      'query',
       'ruby',
       'toml',
       'typescript',
+      'vim',
+      'vimdoc',
       'vue',
       'yaml',
     }
