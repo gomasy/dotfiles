@@ -1,8 +1,10 @@
 return {
-  'Shougo/deol.nvim',
+  'akinsho/toggleterm.nvim',
+  version = '*',
   config = function()
-    vim.keymap.set('n', 'df', ':Deol -split=floating<CR>', { silent = true })
-    vim.keymap.set('n', 'dv', ':Deol -split=vertical<CR>', { silent = true })
-    vim.keymap.set('n', 'dh', ':Deol -split=horizontal<CR>', { silent = true })
+    require('toggleterm').setup()
+    vim.keymap.set('n', 'df', ':ToggleTerm direction=float<CR>', { silent = true })
+    vim.keymap.set('n', 'dv', ':ToggleTerm direction=vertical<CR>', { silent = true })
+    vim.keymap.set('n', 'dh', ':ToggleTerm direction=horizontal<CR>', { silent = true })
   end,
 }

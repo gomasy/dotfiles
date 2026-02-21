@@ -1,9 +1,8 @@
 return {
-  'rhysd/vim-operator-surround',
-  dependencies = { 'kana/vim-operator-user' },
+  'kylechui/nvim-surround',
+  version = '*',
+  event = 'VeryLazy',
   config = function()
-    vim.keymap.set('n', 'ys', '<Plug>(operator-surround-append)', { remap = true })
-    vim.keymap.set('n', 'ds', '<Plug>(operator-surround-delete)', { remap = true })
-    vim.keymap.set('n', 'cs', '<Plug>(operator-surround-replace)', { remap = true })
+    require('nvim-surround').setup()
   end,
 }

@@ -1,10 +1,13 @@
 return {
-  'bronson/vim-trailing-whitespace',
+  'echasnovski/mini.trailspace',
+  version = '*',
   config = function()
-    vim.g.extra_whitespace_ignored_filetypes = { 'help', 'nerdtree' }
+    require('mini.trailspace').setup()
     vim.api.nvim_create_autocmd('ColorScheme', {
       pattern = '*',
-      command = 'highlight ExtraWhitespace ctermbg=red guibg=#b71c1c',
+      callback = function()
+        vim.api.nvim_set_hl(0, 'MiniTrailspace', { bg = '#b71c1c' })
+      end,
     })
   end,
 }

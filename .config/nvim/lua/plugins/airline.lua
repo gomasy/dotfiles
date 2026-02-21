@@ -1,11 +1,16 @@
 return {
-  'vim-airline/vim-airline',
-  init = function()
-    vim.g.airline_powerline_fonts = 1
-    vim.g['airline#extensions#tabline#enabled'] = 1
-    vim.g.airline_left_sep = ''
-    vim.g.airline_left_alt_sep = ''
-    vim.g.airline_right_sep = ''
-    vim.g.airline_right_alt_sep = ''
+  'nvim-lualine/lualine.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  config = function()
+    require('lualine').setup({
+      options = {
+        section_separators = { left = '', right = '' },
+        component_separators = { left = '', right = '' },
+      },
+      tabline = {
+        lualine_a = { 'buffers' },
+        lualine_z = { 'tabs' },
+      },
+    })
   end,
 }
