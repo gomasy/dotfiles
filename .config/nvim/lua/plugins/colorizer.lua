@@ -1,6 +1,6 @@
 return {
   'catgoose/nvim-colorizer.lua',
-  ft = { 'css', 'html', 'scss' },
+  event = 'BufReadPre',
   config = function()
     require('colorizer').setup({
       filetypes = { 'css', 'html', 'scss' },
