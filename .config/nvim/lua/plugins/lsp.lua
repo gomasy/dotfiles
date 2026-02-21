@@ -14,7 +14,7 @@ return {
         'html',
         'jsonls',
         'intelephense',
-        'solargraph',
+        'ruby_lsp',
         'ts_ls',
         'vue_ls',
         'lua_ls',
