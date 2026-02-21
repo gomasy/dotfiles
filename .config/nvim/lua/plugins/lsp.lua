@@ -11,6 +11,7 @@ return {
     opts = {
       ensure_installed = {
         'cssls',
+        'html',
         'jsonls',
         'intelephense',
         'solargraph',
@@ -20,6 +21,8 @@ return {
         'yamlls',
         'bashls',
         'dockerls',
+        'marksman',
+        'taplo',
       },
       automatic_enable = true,
     },
