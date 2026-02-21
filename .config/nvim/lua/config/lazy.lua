@@ -15,15 +15,25 @@ require('lazy').setup({
     lazy = false,
     version = false,
   },
-  install = { colorscheme = { 'molokai', 'habamax' } },
+  install = { colorscheme = { 'molokai' } },
   checker = {
     enabled = true,
+    notify = false,
+  },
+  change_detection = {
     notify = false,
   },
   performance = {
     rtp = {
       disabled_plugins = {
         'gzip',
+        'matchit',
+        'netrw',
+        'netrwFileHandlers',
+        'netrwPlugin',
+        'netrwSettings',
+        'rplugin',
+        'spellfile_plugin',
         'tarPlugin',
         'tohtml',
         'tutor',
