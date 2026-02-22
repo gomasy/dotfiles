@@ -8,23 +8,26 @@ return {
   {
     'williamboman/mason-lspconfig.nvim',
     dependencies = { 'williamboman/mason.nvim', 'neovim/nvim-lspconfig' },
-    opts = {
-      ensure_installed = {
-        'cssls',
-        'html',
-        'jsonls',
-        'intelephense',
-        'ruby_lsp',
-        'ts_ls',
-        'vue_ls',
-        'lua_ls',
-        'yamlls',
-        'bashls',
-        'dockerls',
-        'marksman',
-      },
-      automatic_enable = true,
-    },
+    opts = function()
+      local servers = { 'ruby_lsp', 'lua_ls', 'marksman' }
+      if vim.fn.executable('npm') == 1 then
+        vim.list_extend(servers, {
+          'cssls',
+          'html',
+          'jsonls',
+          'intelephense',
+          'ts_ls',
+          'vue_ls',
+          'yamlls',
+          'bashls',
+          'dockerls',
+        })
+      end
+      return {
+        ensure_installed = servers,
+        automatic_enable = true,
+      }
+    end,
   },
   {
     'neovim/nvim-lspconfig',
