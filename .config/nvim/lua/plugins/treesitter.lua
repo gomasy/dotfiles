@@ -14,6 +14,7 @@ return {
       'lua',
       'markdown',
       'markdown_inline',
+      'nginx',
       'php',
       'query',
       'ruby',
