@@ -1,19 +1,18 @@
 local function toggle(name)
-  vim.cmd('set ' .. name .. '!')
-  local val = vim.api.nvim_get_option_value(name, {})
-  local state = val and 'true' or 'false'
+  vim.o[name] = not vim.o[name]
+  local state = vim.o[name] and 'true' or 'false'
   vim.api.nvim_echo({ { '*** Toggled ' .. name .. ' to ' .. state .. ' ***', 'Title' } }, false, {})
 end
 
 -- Common settings
 vim.keymap.set('n', '<Leader>r', function() vim.cmd('source ~/.config/nvim/init.lua') end, { silent = true })
-vim.keymap.set('n', '<ESC><ESC>', ':noh<CR>', { silent = true })
-vim.keymap.set('n', '<C-n>', ':new<CR>', { silent = true })
-vim.keymap.set('n', '<C-w>h', ':sp<CR>', { silent = true })
-vim.keymap.set('n', '<C-w>v', ':vsp<CR>', { silent = true })
-vim.keymap.set('n', '<S-n>', ':tabnew<CR>', { silent = true })
-vim.keymap.set('n', '<S-TAB>', ':tabp<CR>', { silent = true })
-vim.keymap.set('n', '<TAB>', ':tabn<CR>', { silent = true })
+vim.keymap.set('n', '<ESC><ESC>', '<cmd>noh<CR>', { silent = true })
+vim.keymap.set('n', '<C-n>', '<cmd>new<CR>', { silent = true })
+vim.keymap.set('n', '<C-w>h', '<cmd>sp<CR>', { silent = true })
+vim.keymap.set('n', '<C-w>v', '<cmd>vsp<CR>', { silent = true })
+vim.keymap.set('n', '<S-n>', '<cmd>tabnew<CR>', { silent = true })
+vim.keymap.set('n', '<S-TAB>', '<cmd>tabp<CR>', { silent = true })
+vim.keymap.set('n', '<TAB>', '<cmd>tabn<CR>', { silent = true })
 vim.keymap.set('n', '<C-w>oh', ':sp<Space>')
 vim.keymap.set('n', '<C-w>ov', ':vsp<Space>')
 vim.keymap.set('n', '<C-o>', ':o<Space>')

@@ -9,6 +9,6 @@ return {
         dotfiles = false,
       },
     })
-    vim.keymap.set('n', '<C-f>', ':NvimTreeToggle<CR>', { silent = true })
+    vim.keymap.set('n', '<C-f>', '<cmd>NvimTreeToggle<CR>', { silent = true })
   end,
 }
