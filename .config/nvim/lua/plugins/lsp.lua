@@ -9,19 +9,22 @@ return {
     'williamboman/mason-lspconfig.nvim',
     dependencies = { 'williamboman/mason.nvim', 'neovim/nvim-lspconfig' },
     opts = function()
-      local servers = { 'ruby_lsp', 'lua_ls', 'marksman' }
+      local servers = {}
       if vim.fn.executable('npm') == 1 then
-        vim.list_extend(servers, {
+        servers = {
+          'bashls',
           'cssls',
+          'dockerls',
           'html',
-          'jsonls',
           'intelephense',
+          'jsonls',
+          'lua_ls',
+          'marksman',
+          'ruby_lsp',
           'ts_ls',
           'vue_ls',
           'yamlls',
-          'bashls',
-          'dockerls',
-        })
+        }
       end
       return {
         ensure_installed = servers,
