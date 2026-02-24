@@ -30,14 +30,14 @@ zinit light zsh-users/zsh-syntax-highlighting
 # Zsh functions
 zshaddhistory() { [[ ${#1%%$'\n'} -ge 5 ]] }
 zshexit() {
-    ! tmux has 2> /dev/null && [[ `ps x | grep \[p\]owerline-daemon | wc -l` -ne 0 ]] && powerline-daemon -k
+    ! tmux has 2> /dev/null && pgrep -x powerline-daemon > /dev/null && powerline-daemon -k
 }
 prompt_context() {
     if [[ $USER != "gomasy" || -n $SSH_CONNECTION ]]; then
         prompt_segment black default "%(!.%{%F{yellow}%}.)$USER@%m"
     fi
 }
-if which wine &> /dev/null && id wineuser &> /dev/null; then
+if command -v wine &> /dev/null && id wineuser &> /dev/null; then
     run_as_wineuser() { sudo -u wineuser env PULSE_SERVER=localhost $funcstack[2] $@ }
     wine() { run_as_wineuser $@ }
     winecfg() { run_as_wineuser $@ }
@@ -82,11 +82,11 @@ export EDITOR="nvim"
 export GPG_TTY=$(tty)
 
 # Set personal aliases
-if which $EDITOR &> /dev/null; then
+if command -v $EDITOR &> /dev/null; then
     alias emacs=$EDITOR
     alias vi=$EDITOR
 
-    if ! which vim &> /dev/null; then
+    if ! command -v vim &> /dev/null; then
         alias vim=$EDITOR
     fi
 fi
@@ -97,12 +97,12 @@ REPORTTIME=3
 # Load local .zshrc
 [[ -e $HOME/.zshrc.local ]] && source $HOME/.zshrc.local
 
-if [[ `id -u` -ne 0 ]]; then
+if [[ $(id -u) -ne 0 ]]; then
     # Ruby settings
-    if which ruby &> /dev/null || [[ -e $HOME/.rbenv ]]; then
+    if command -v ruby &> /dev/null || [[ -e $HOME/.rbenv ]]; then
         export PATH=$HOME/.rbenv/bin:$PATH
 
-        if ! which rbenv &> /dev/null; then
+        if ! command -v rbenv &> /dev/null; then
             if [[ ! -e $HOME/.rbenv ]]; then
                 echo "\e[1m[*] Installing rbenv...\e[m"
                 git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
@@ -115,17 +115,17 @@ if [[ `id -u` -ne 0 ]]; then
             export PATH=$(ruby -e'print Gem.user_dir')/bin:$PATH
         fi
 
-        if ! which bundler &> /dev/null; then
+        if ! command -v bundler &> /dev/null; then
             echo "\e[1m[*] Installing bundler...\e[m"
             gem install bundler
         fi
     fi
 
     # PHP settings
-    if which php &> /dev/null || [[ -e $HOME/.phpenv ]]; then
+    if command -v php &> /dev/null || [[ -e $HOME/.phpenv ]]; then
         export PATH=$HOME/.phpenv/bin:$PATH
 
-        if ! which phpenv &> /dev/null; then
+        if ! command -v phpenv &> /dev/null; then
             if [[ ! -e $HOME/.phpenv ]]; then
                 echo "\e[1m[*] Installing phpenv...\e[m"
                 git clone https://github.com/phpenv/phpenv.git $HOME/.phpenv
@@ -139,8 +139,8 @@ if [[ `id -u` -ne 0 ]]; then
     fi
 
     # Node settings
-    if which node &> /dev/null || [[ -e $HOME/.nvm ]]; then
-        if ! which nvm &> /dev/null; then
+    if command -v node &> /dev/null || [[ -e $HOME/.nvm ]]; then
+        if ! command -v nvm &> /dev/null; then
             if [[ ! -e $HOME/.nvm ]]; then
                 echo "\e[1m[*] Installing nvm...\e[m"
                 git clone https://github.com/nvm-sh/nvm.git $HOME/.nvm
@@ -153,7 +153,7 @@ if [[ `id -u` -ne 0 ]]; then
 fi
 
 # Run tmux
-if which tmux &> /dev/null && [[ $- != *l* ]]; then
+if command -v tmux &> /dev/null && [[ $- != *l* ]]; then
     if tmux has 2> /dev/null; then
         active=$(tmux ls | grep -v attached | wc -l)
         if [[ $active -ne 0 ]]; then
