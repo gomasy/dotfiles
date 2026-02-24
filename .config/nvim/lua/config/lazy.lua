@@ -16,7 +16,7 @@ require('lazy').setup({
     lazy = false,
     version = false,
   },
-  install = { colorscheme = { 'molokai' } },
+  install = { colorscheme = { 'backpack' } },
   checker = {
     enabled = true,
     notify = false,
