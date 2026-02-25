@@ -1,5 +1,3 @@
-vim.loader.enable()
-
 -- Use ',' as the leader key
 vim.g.mapleader = ','
 
