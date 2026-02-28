@@ -4,6 +4,6 @@ return {
   lazy = false,
   config = function()
     require('backpack').setup()
-    vim.cmd('colorscheme backpack')
+    vim.cmd.colorscheme('backpack')
   end,
 }

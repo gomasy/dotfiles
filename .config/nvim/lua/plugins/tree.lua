@@ -5,7 +5,7 @@ return {
   },
   opts = {
     view = {
-      width = vim.fn.winwidth(0) < 160 and 30 or 40,
+      width = vim.api.nvim_win_get_width(0) < 160 and 30 or 40,
     },
     filters = {
       dotfiles = false,

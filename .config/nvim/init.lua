@@ -6,6 +6,6 @@ require('config.keymaps')
 require('config.lazy')
 
 local local_config = vim.fn.stdpath('config') .. '/local.lua'
-if vim.fn.filereadable(local_config) == 1 then
+if vim.uv.fs_stat(local_config) then
   dofile(local_config)
 end

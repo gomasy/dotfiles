@@ -1,11 +1,16 @@
 local function toggle(name)
   vim.o[name] = not vim.o[name]
   local state = vim.o[name] and 'true' or 'false'
-  vim.api.nvim_echo({ { '*** Toggled ' .. name .. ' to ' .. state .. ' ***', 'Title' } }, false, {})
+  vim.notify('Toggled ' .. name .. ' to ' .. state)
 end
 
 -- Common settings
-vim.keymap.set('n', '<Leader>r', function() vim.cmd('source ~/.config/nvim/init.lua') end, { silent = true })
+local function reload()
+  vim.cmd.source(vim.env.MYVIMRC)
+  vim.notify('Reloaded ' .. vim.env.MYVIMRC)
+end
+
+vim.keymap.set('n', '<Leader>r', reload, { silent = true })
 vim.keymap.set('n', '<ESC><ESC>', '<cmd>noh<CR>', { silent = true })
 vim.keymap.set('n', '<C-n>', '<cmd>new<CR>', { silent = true })
 vim.keymap.set('n', '<C-w>h', '<cmd>sp<CR>', { silent = true })
