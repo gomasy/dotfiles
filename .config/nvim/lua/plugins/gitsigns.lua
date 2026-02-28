@@ -10,13 +10,13 @@ return {
 
       vim.keymap.set('n', ']c', function()
         if vim.wo.diff then return ']c' end
-        vim.schedule(gs.next_hunk)
+        vim.schedule(function() gs.nav_hunk('next') end)
         return '<Ignore>'
       end, { buffer = bufnr, expr = true, desc = 'Next hunk' })
 
       vim.keymap.set('n', '[c', function()
         if vim.wo.diff then return '[c' end
-        vim.schedule(gs.prev_hunk)
+        vim.schedule(function() gs.nav_hunk('prev') end)
         return '<Ignore>'
       end, { buffer = bufnr, expr = true, desc = 'Prev hunk' })
 
