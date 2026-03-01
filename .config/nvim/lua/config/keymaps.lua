@@ -4,12 +4,12 @@ local function toggle(name)
   vim.notify('Toggled ' .. name .. ' to ' .. state)
 end
 
--- Common settings
 local function reload()
   vim.cmd.source(vim.env.MYVIMRC)
   vim.notify('Reloaded ' .. vim.env.MYVIMRC)
 end
 
+-- Common settings
 vim.keymap.set('n', '<Leader>r', reload, { silent = true })
 vim.keymap.set('n', '<ESC><ESC>', '<cmd>noh<CR>', { silent = true })
 vim.keymap.set('n', '<C-n>', '<cmd>new<CR>', { silent = true })
