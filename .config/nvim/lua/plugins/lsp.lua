@@ -28,7 +28,6 @@ return {
       end
       return {
         ensure_installed = servers,
-        automatic_enable = true,
       }
     end,
   },

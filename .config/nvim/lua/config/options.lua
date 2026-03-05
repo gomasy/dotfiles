@@ -1,5 +1,3 @@
-vim.api.nvim_create_augroup('MyAutoCmd', { clear = true })
-
 vim.opt.breakindent = true
 vim.opt.clipboard:append('unnamedplus')
 vim.opt.confirm = true
