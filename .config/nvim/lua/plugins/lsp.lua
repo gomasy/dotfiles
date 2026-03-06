@@ -1,12 +1,14 @@
 return {
   {
     'williamboman/mason.nvim',
+    version = '*',
     cmd = 'Mason',
     build = ':MasonUpdate',
     opts = {},
   },
   {
     'williamboman/mason-lspconfig.nvim',
+    version = '*',
     dependencies = { 'williamboman/mason.nvim', 'neovim/nvim-lspconfig' },
     opts = function()
       local servers = {}
@@ -33,6 +35,7 @@ return {
   },
   {
     'neovim/nvim-lspconfig',
+    version = '*',
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       vim.lsp.config('*', {
