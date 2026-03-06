@@ -13,8 +13,6 @@ end
 vim.keymap.set('n', '<Leader>r', reload, { silent = true })
 vim.keymap.set('n', '<ESC><ESC>', '<cmd>noh<CR>', { silent = true })
 vim.keymap.set('n', '<C-n>', '<cmd>new<CR>', { silent = true })
-vim.keymap.set('n', '<C-w>h', '<cmd>sp<CR>', { silent = true })
-vim.keymap.set('n', '<C-w>v', '<cmd>vsp<CR>', { silent = true })
 vim.keymap.set('n', '<S-n>', '<cmd>tabnew<CR>', { silent = true })
 vim.keymap.set('n', '<S-TAB>', '<cmd>tabp<CR>', { silent = true })
 vim.keymap.set('n', '<TAB>', '<cmd>tabn<CR>', { silent = true })

@@ -12,10 +12,6 @@ require('lazy').setup({
     { 'folke/lazy.nvim', version = '*' },
     { import = 'plugins' },
   },
-  defaults = {
-    lazy = false,
-    version = false,
-  },
   install = { colorscheme = { 'backpack' } },
   checker = {
     enabled = true,
