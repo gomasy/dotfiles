@@ -33,7 +33,7 @@ return {
     local missing = vim.tbl_filter(function(p)
       return not vim.uv.fs_stat(vim.fs.joinpath(install_dir, p .. '.so'))
     end, parsers)
-    if #missing > 0 then
+    if #missing > 0 and vim.fn.executable('tree-sitter') == 1 then
       require('nvim-treesitter').install(missing):wait(300000)
     end
 
