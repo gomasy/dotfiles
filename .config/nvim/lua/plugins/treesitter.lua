@@ -1,5 +1,5 @@
 return {
-  'nvim-treesitter/nvim-treesitter',
+  'neovim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
   dependencies = {
     'RRethy/nvim-treesitter-endwise',
