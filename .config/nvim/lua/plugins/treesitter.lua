@@ -2,6 +2,7 @@ return {
   'neovim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
   dependencies = {
+    'neovim-treesitter/treesitter-parser-registry',
     'RRethy/nvim-treesitter-endwise',
   },
   config = function()
