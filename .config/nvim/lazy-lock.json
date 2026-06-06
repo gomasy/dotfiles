@@ -1,5 +1,4 @@
 {
-  "augment.vim": { "branch": "main", "commit": "c3219039c350f8cb08ba0764c4d94674ff71a3e0" },
   "backpack.nvim": { "branch": "main", "commit": "d4428964cf5d1ae8c9a27ef3540251d41902e209" },
   "claudecode.nvim": { "branch": "main", "commit": "2e6ea6f2a63cdf4fd3c05e6a054151d46848d319" },
   "cmp-buffer": { "branch": "main", "commit": "b74fab3656eea9de20a9b8116afa3cfc4ec09657" },
