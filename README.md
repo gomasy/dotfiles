@@ -1,6 +1,6 @@
 # dotfiles
 
-My personal dotfiles for Zsh, Neovim, tmux, Git, and more.
+My personal dotfiles for Zsh, Neovim, tmux, Git, fontconfig, and more.
 
 ## Setup
 
@@ -11,6 +11,6 @@ make install
 ```
 
 To install a single configuration, run `make <target>`.
-Available targets: `git`, `zsh`, `nvim`, `tmux`, `ruby`, `gpg`, `bvi`, `x11`, `powerline`, `terminator`.
+Available targets: `git`, `zsh`, `nvim`, `tmux`, `ruby`, `gpg`, `bvi`, `x11`, `powerline`, `terminator`, `fontconfig`.
 
 `make install` skips configurations for tools that are not installed.

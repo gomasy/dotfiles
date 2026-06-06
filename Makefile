@@ -1,13 +1,14 @@
 # Existence check
-BVI    := $(shell which bvi 2> /dev/null)
-GPG    := $(shell which gpg 2> /dev/null)
-PWLINE := $(shell which powerline 2> /dev/null)
-RUBY   := $(shell which ruby 2> /dev/null)
-TERM   := $(shell which terminator 2> /dev/null)
-TMUX   := $(shell which tmux 2> /dev/null)
-NEOVIM := $(shell which nvim 2> /dev/null)
-X      := $(shell which X 2> /dev/null)
-ZSH    := $(shell which zsh 2> /dev/null)
+BVI        := $(shell which bvi 2> /dev/null)
+FONTCONFIG := $(shell which fc-cache 2> /dev/null)
+GPG        := $(shell which gpg 2> /dev/null)
+PWLINE     := $(shell which powerline 2> /dev/null)
+RUBY       := $(shell which ruby 2> /dev/null)
+TERM       := $(shell which terminator 2> /dev/null)
+TMUX       := $(shell which tmux 2> /dev/null)
+NEOVIM     := $(shell which nvim 2> /dev/null)
+X          := $(shell which X 2> /dev/null)
+ZSH        := $(shell which zsh 2> /dev/null)
 
 # Git signing options
 GPGSIGN ?= false
@@ -21,6 +22,10 @@ TARGETS := git
 
 ifdef BVI
 TARGETS += bvi
+endif
+
+ifdef FONTCONFIG
+TARGETS += fontconfig
 endif
 
 ifdef GPG
@@ -55,7 +60,7 @@ ifdef ZSH
 TARGETS += zsh
 endif
 
-.PHONY: install bvi git gpg nvim powerline ruby terminator tmux x11 zsh
+.PHONY: install bvi fontconfig git gpg nvim powerline ruby terminator tmux x11 zsh
 
 install:
 	chmod 700 ${PWD}/.config ${PWD}/.gnupg ${PWD}/.ssh
@@ -63,6 +68,10 @@ install:
 
 bvi:
 	ln -sf ${PWD}/.bvirc ${HOME}/.bvirc
+
+fontconfig:
+	mkdir -p -m 700 ${HOME}/.config
+	ln -sf ${PWD}/.config/fontconfig ${HOME}/.config/fontconfig
 
 git:
 	mkdir -p -m 700 ${HOME}/.ssh
