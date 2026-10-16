@@ -1,7 +1,8 @@
 return {
   'lambdalisue/vim-suda',
   version = '*',
-  config = function()
-    vim.keymap.set('n', '<Leader>su', '<cmd>w suda://%<CR>', { silent = true })
-  end,
+  lazy = false,
+  keys = {
+    { '<Leader>su', '<cmd>w suda://%<CR>', desc = 'Write with sudo' },
+  },
 }

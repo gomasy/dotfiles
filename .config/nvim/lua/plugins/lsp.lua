@@ -10,6 +10,7 @@ return {
     'mason-org/mason-lspconfig.nvim',
     version = '*',
     dependencies = { 'mason-org/mason.nvim', 'neovim/nvim-lspconfig' },
+    event = { 'BufReadPre', 'BufNewFile' },
     opts = function()
       local servers = {}
       if vim.fn.executable('npm') == 1 then
