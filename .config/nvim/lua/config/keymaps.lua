@@ -1,21 +1,15 @@
-local function toggle(name)
-  vim.o[name] = not vim.o[name]
-  local state = vim.o[name] and 'true' or 'false'
-  vim.notify('Toggled ' .. name .. ' to ' .. state)
-end
-
 local function reload()
   vim.cmd.source(vim.env.MYVIMRC)
   vim.notify('Reloaded ' .. vim.env.MYVIMRC)
 end
 
 -- Common settings
-vim.keymap.set('n', '<Leader>r', reload, { silent = true })
-vim.keymap.set('n', '<ESC><ESC>', '<cmd>noh<CR>', { silent = true })
-vim.keymap.set('n', '<C-n>', '<cmd>new<CR>', { silent = true })
-vim.keymap.set('n', '<S-n>', '<cmd>tabnew<CR>', { silent = true })
-vim.keymap.set('n', '<S-TAB>', '<cmd>tabp<CR>', { silent = true })
-vim.keymap.set('n', '<TAB>', '<cmd>tabn<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>r', reload)
+vim.keymap.set('n', '<ESC><ESC>', '<cmd>noh<CR>')
+vim.keymap.set('n', '<C-n>', '<cmd>new<CR>')
+vim.keymap.set('n', '<S-n>', '<cmd>tabnew<CR>')
+vim.keymap.set('n', '<S-TAB>', '<cmd>tabp<CR>')
+vim.keymap.set('n', '<TAB>', '<cmd>tabn<CR>')
 vim.keymap.set('n', '<C-w>oh', ':sp<Space>')
 vim.keymap.set('n', '<C-w>ov', ':vsp<Space>')
 vim.keymap.set('n', '<C-o>', ':o<Space>')
@@ -29,33 +23,32 @@ vim.keymap.set({ 'n', 'v', 'o' }, '<S-j>', '}')
 vim.keymap.set({ 'n', 'v', 'o' }, '<S-k>', '{')
 vim.keymap.set({ 'n', 'v', 'o' }, '<S-l>', '$')
 
--- Disable confusing keys
-vim.keymap.set('n', 'ZZ', '<Nop>')
-vim.keymap.set('n', 'ZQ', '<Nop>')
-vim.keymap.set('n', 'Q', '<Nop>')
-
--- Disable arrow keys in v, o, i modes
-vim.keymap.set({ 'v', 'o' }, '<Left>', '<Nop>')
-vim.keymap.set({ 'v', 'o' }, '<Down>', '<Nop>')
-vim.keymap.set({ 'v', 'o' }, '<Up>', '<Nop>')
-vim.keymap.set({ 'v', 'o' }, '<Right>', '<Nop>')
-vim.keymap.set('i', '<Left>', '<Nop>')
-vim.keymap.set('i', '<Down>', '<Nop>')
-vim.keymap.set('i', '<Up>', '<Nop>')
-vim.keymap.set('i', '<Right>', '<Nop>')
+-- Disable confusing keys and arrow keys outside normal mode
+for _, key in ipairs({ 'ZZ', 'ZQ', 'Q' }) do
+  vim.keymap.set('n', key, '<Nop>')
+end
+for _, key in ipairs({ '<Left>', '<Down>', '<Up>', '<Right>' }) do
+  vim.keymap.set({ 'i', 'v', 'o' }, key, '<Nop>')
+end
 
 -- Window settings (n mode arrow keys)
-vim.keymap.set('n', '<Left>', '<C-w>h')
-vim.keymap.set('n', '<Down>', '<C-w>j')
-vim.keymap.set('n', '<Up>', '<C-w>k')
-vim.keymap.set('n', '<Right>', '<C-w>l')
-vim.keymap.set('n', '<S-Up>', '<C-w>+')
-vim.keymap.set('n', '<S-Down>', '<C-w>-')
-vim.keymap.set('n', '<S-Left>', '<C-w><')
-vim.keymap.set('n', '<S-Right>', '<C-w>>')
+for lhs, rhs in pairs({
+  ['<Left>'] = '<C-w>h',
+  ['<Down>'] = '<C-w>j',
+  ['<Up>'] = '<C-w>k',
+  ['<Right>'] = '<C-w>l',
+  ['<S-Up>'] = '<C-w>+',
+  ['<S-Down>'] = '<C-w>-',
+  ['<S-Left>'] = '<C-w><',
+  ['<S-Right>'] = '<C-w>>',
+}) do
+  vim.keymap.set('n', lhs, rhs)
+end
 
 -- Toggle options
-vim.keymap.set('n', '<Leader>g', function() toggle('termguicolors') end, { silent = true })
-vim.keymap.set('n', '<Leader>n', function() toggle('relativenumber') end, { silent = true })
-vim.keymap.set('n', '<Leader>t', function() toggle('expandtab') end, { silent = true })
-vim.keymap.set('n', '<Leader>w', function() toggle('wrap') end, { silent = true })
+for key, name in pairs({ g = 'termguicolors', n = 'relativenumber', t = 'expandtab', w = 'wrap' }) do
+  vim.keymap.set('n', '<Leader>' .. key, function()
+    vim.o[name] = not vim.o[name]
+    vim.notify('Toggled ' .. name .. ' to ' .. tostring(vim.o[name]))
+  end)
+end

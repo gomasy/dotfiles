@@ -11,28 +11,22 @@ return {
     version = '*',
     dependencies = { 'mason-org/mason.nvim', 'neovim/nvim-lspconfig' },
     event = { 'BufReadPre', 'BufNewFile' },
-    opts = function()
-      local servers = {}
-      if vim.fn.executable('npm') == 1 then
-        servers = {
-          'bashls',
-          'cssls',
-          'dockerls',
-          'html',
-          'intelephense',
-          'jsonls',
-          'lua_ls',
-          'marksman',
-          'ruby_lsp',
-          'ts_ls',
-          'vue_ls',
-          'yamlls',
-        }
-      end
-      return {
-        ensure_installed = servers,
-      }
-    end,
+    opts = {
+      ensure_installed = vim.fn.executable('npm') == 1 and {
+        'bashls',
+        'cssls',
+        'dockerls',
+        'html',
+        'intelephense',
+        'jsonls',
+        'lua_ls',
+        'marksman',
+        'ruby_lsp',
+        'ts_ls',
+        'vue_ls',
+        'yamlls',
+      } or {},
+    },
   },
   {
     'neovim/nvim-lspconfig',

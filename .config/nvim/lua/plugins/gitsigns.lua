@@ -9,17 +9,15 @@ return {
         return { buffer = bufnr, desc = desc }
       end
 
-      vim.keymap.set('n', ']c', function()
-        if vim.wo.diff then return ']c' end
-        vim.schedule(function() gs.nav_hunk('next') end)
-        return '<Ignore>'
-      end, { buffer = bufnr, expr = true, desc = 'Next hunk' })
-
-      vim.keymap.set('n', '[c', function()
-        if vim.wo.diff then return '[c' end
-        vim.schedule(function() gs.nav_hunk('prev') end)
-        return '<Ignore>'
-      end, { buffer = bufnr, expr = true, desc = 'Prev hunk' })
+      local function nav(key, dir, desc)
+        vim.keymap.set('n', key, function()
+          if vim.wo.diff then return key end
+          vim.schedule(function() gs.nav_hunk(dir) end)
+          return '<Ignore>'
+        end, { buffer = bufnr, expr = true, desc = desc })
+      end
+      nav(']c', 'next', 'Next hunk')
+      nav('[c', 'prev', 'Prev hunk')
 
       vim.keymap.set('n', '<Leader>hs', gs.stage_hunk, opts('Stage hunk'))
       vim.keymap.set('n', '<Leader>hr', gs.reset_hunk, opts('Reset hunk'))

@@ -35,3 +35,12 @@ vim.opt.virtualedit = 'block'
 vim.opt.wildignorecase = true
 vim.opt.winblend = 30
 vim.opt.writebackup = false
+
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('config_indent', {}),
+  pattern = { 'ruby', 'vim', 'yaml' },
+  callback = function()
+    vim.bo.tabstop = 2
+    vim.bo.shiftwidth = 2
+  end,
+})
