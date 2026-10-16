@@ -1,15 +1,15 @@
 return {
   {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     version = '*',
     cmd = 'Mason',
     build = ':MasonUpdate',
     opts = {},
   },
   {
-    'williamboman/mason-lspconfig.nvim',
+    'mason-org/mason-lspconfig.nvim',
     version = '*',
-    dependencies = { 'williamboman/mason.nvim', 'neovim/nvim-lspconfig' },
+    dependencies = { 'mason-org/mason.nvim', 'neovim/nvim-lspconfig' },
     opts = function()
       local servers = {}
       if vim.fn.executable('npm') == 1 then

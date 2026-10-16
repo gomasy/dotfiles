@@ -1,5 +1,5 @@
 return {
-  'lambdalisue/suda.vim',
+  'lambdalisue/vim-suda',
   version = '*',
   config = function()
     vim.keymap.set('n', '<Leader>su', '<cmd>w suda://%<CR>', { silent = true })
