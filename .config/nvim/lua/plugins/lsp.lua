@@ -40,9 +40,9 @@ return {
     dependencies = { 'saghen/blink.cmp' },
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-      vim.lsp.config('*', {
-        on_attach = function(_, bufnr)
-          vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = bufnr })
+      vim.api.nvim_create_autocmd('LspAttach', {
+        callback = function(args)
+          vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = args.buf })
         end,
       })
     end,
