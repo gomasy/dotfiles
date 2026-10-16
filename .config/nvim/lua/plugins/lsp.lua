@@ -36,10 +36,11 @@ return {
   {
     'neovim/nvim-lspconfig',
     version = '*',
+    -- blink.cmp registers its LSP capabilities when loaded
+    dependencies = { 'saghen/blink.cmp' },
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       vim.lsp.config('*', {
-        capabilities = require('cmp_nvim_lsp').default_capabilities(),
         on_attach = function(_, bufnr)
           vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = bufnr })
         end,
