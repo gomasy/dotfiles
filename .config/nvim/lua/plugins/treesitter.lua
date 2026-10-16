@@ -30,9 +30,9 @@ return {
 
     -- Synchronously install missing parsers on first run so they are
     -- available before ftplugins (e.g. ftplugin/lua.lua) enable treesitter
-    local install_dir = require('nvim-treesitter.config').get_install_dir('parsers')
+    local installed = require('nvim-treesitter.config').get_installed('parsers')
     local missing = vim.tbl_filter(function(p)
-      return not vim.uv.fs_stat(vim.fs.joinpath(install_dir, p .. '.so'))
+      return not vim.list_contains(installed, p)
     end, parsers)
     if #missing > 0 and vim.fn.executable('tree-sitter') == 1 then
       require('nvim-treesitter').install(missing):wait(300000)
